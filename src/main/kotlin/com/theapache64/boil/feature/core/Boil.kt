@@ -19,5 +19,4 @@ class Boil : Callable<Int> {
     override fun call(): Int {
         return 0
     }
-
 }

@@ -20,6 +20,13 @@ class AddView : Callable<Int> {
     @Inject
     lateinit var addViewModel: AddViewModel
 
+    init {
+        DaggerAddComponent
+            .builder()
+            .build()
+            .inject(this)
+    }
+
     override fun call(): Int = runBlocking {
         addViewModel.call(this@AddView)
     }
