@@ -52,6 +52,9 @@ dependencies {
 
 	// Moshi : Moshi
 	implementation 'com.squareup.moshi:moshi:1.9.3'
+
+	// Expekt : BDD assertion library for Kotlin
+	testImplementation 'com.winterbe:expekt:0.5.0'
 }
 
 compileKotlin {

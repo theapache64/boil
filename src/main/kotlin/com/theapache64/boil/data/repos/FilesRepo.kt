@@ -1,6 +1,9 @@
 package com.theapache64.boil.data.repos
 
 import com.theapache64.boil.data.remote.Api
+import com.theapache64.boil.utils.calladapter.flow.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 /**
@@ -14,10 +17,8 @@ class FilesRepo @Inject constructor(
         private const val SOURCE_BASE = "https://raw.githubusercontent.com/theapache64/boil/master/files/"
     }
 
-    suspend fun getFile(fileName: String) {
+    fun getFile(fileName: String): Flow<Resource<String>> {
         val fullUrl = "$SOURCE_BASE$fileName"
-        println(fullUrl)
-        val fileContent = api.getFile(fullUrl)
-        println(fileContent)
+        return api.getFile(fullUrl)
     }
 }

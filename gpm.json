@@ -139,6 +139,20 @@
     "name": "Moshi",
     "description": "Moshi"
    }
+  },
+  {
+   "id": 12,
+   "type": "testImplementation",
+   "installed_name": "expekt",
+   "gpm_dep": {
+    "artifact_id": "expekt",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/com.winterbe/expekt",
+    "get_from": "Central",
+    "group_id": "com.winterbe",
+    "name": "Expekt",
+    "description": "BDD assertion library for Kotlin"
+   }
   }
  ]
 }

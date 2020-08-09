@@ -41,6 +41,7 @@ class NetworkModule {
             .client(okHttpClient)
             .baseUrl("https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/")
             .addCallAdapterFactory(FlowResourceCallAdapterFactory())
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

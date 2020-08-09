@@ -19,7 +19,7 @@ interface Api {
     ): Flow<Resource<Group>>
 
     @GET
-    suspend fun getFile(
+    fun getFile(
         @Url url: String
-    ): String
+    ): Flow<Resource<String>>
 }
