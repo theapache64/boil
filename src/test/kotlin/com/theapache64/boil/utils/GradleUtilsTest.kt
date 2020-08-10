@@ -12,14 +12,14 @@ class GradleUtilsTest {
     fun `gradle project packageName`() {
         val boilDir = System.getProperty("user.dir")
         val packageName = GradleUtils.getProjectPackageName(boilDir)
-        packageName.should.equal("com.theapache64.boil")
+        packageName?.second.should.equal("com.theapache64.boil")
     }
 
     @Test
     fun `android project packageName`() {
         val nemoDir = "/home/theapache64/Documents/projects/nemo"
         val packageName = GradleUtils.getProjectPackageName(nemoDir)
-        packageName.should.equal("com.theapache64.nemo")
+        packageName?.second.should.equal("com.theapache64.nemo")
     }
 
     @Test

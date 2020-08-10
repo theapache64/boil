@@ -7,6 +7,7 @@ import com.theapache64.boil.utils.GradleUtils
 import com.theapache64.boil.utils.InputUtils
 import com.theapache64.boil.utils.calladapter.flow.Resource
 import kotlinx.coroutines.flow.collect
+import java.io.File
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -72,11 +73,38 @@ class AddViewModel @Inject constructor(
     private fun onFilesDownloaded(files: Map<String, String>) {
         println("👌 All files downloaded. Initializing integration...")
         val currentDir = System.getProperty("user.dir")
-        val packageName = GradleUtils.getProjectPackageName(currentDir)
-        if (packageName != null) {
-            println("Package name is $packageName")
-        } else {
-            println("Failed to get package name from $currentDir")
+
+        // Getting param values
+        val packageNamePair = GradleUtils.getProjectPackageName(currentDir) ?: throw IllegalArgumentException(
+            """
+            Failed to get package name from $currentDir
+        """.trimIndent()
+        )
+        val dirName = packageNamePair.first
+        val packageName = packageNamePair.second
+        println("Package name is $packageNamePair")
+
+        // Setting param values
+        for (file in files) {
+            val fileName = file.key
+            val fileContent = file.value
+            val updatedFileContent = fileContent.replace(ENV_VAR_PACKAGE_NAME, packageName)
+            val firstLine = fileContent.lines().first()
+            require(firstLine.startsWith("package")) { "Invalid file header. All file should start with 'package'. Found '$firstLine'" }
+            val fullPackageName = updatedFileContent.lines()[0].split("package")[1].trim()
+            val fileTargetDirPath =
+                "${System.getProperty("user.dir")}${File.separator}$dirName${fullPackageName.replace('.', '/')}"
+            val fileTargetDir = File(fileTargetDirPath)
+            if (!fileTargetDir.exists()) {
+                fileTargetDir.mkdirs()
+            }
+            val targetFile = File(fileTargetDirPath + File.separator + fileName)
+            if (targetFile.exists()) {
+                println("${targetFile.absolutePath} exists!")
+            } else {
+                targetFile.writeText(updatedFileContent)
+                println("Created ${targetFile.absolutePath}")
+            }
         }
     }
 
