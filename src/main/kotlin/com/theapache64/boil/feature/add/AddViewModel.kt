@@ -41,7 +41,7 @@ class AddViewModel @Inject constructor(
                             println("    -> $it")
                         }
 
-                        val shouldStartIntegration = true || InputUtils.getString(
+                        val shouldStartIntegration = InputUtils.getString(
                             "⌨ Type 'y' to start integration",
                             true
                         ).trim().toLowerCase() == "y"

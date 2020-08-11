@@ -15,5 +15,6 @@ data class Group(
     @Json(name = "id")
     val id: Int // 1
 ) {
+    @Transient
     val classList = classes.split("\n")
 }

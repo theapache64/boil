@@ -13,7 +13,7 @@ object GradleUtils {
         Pattern.compile("^applicationId \"(.+)\"$")
     }
 
-    private const val START_DIR_ANDROID = "src/main/java/"
+    private const val START_DIR_ANDROID = "app/src/main/java/"
     private const val START_DIR_GRADLE = "src/main/kotlin/"
 
     fun getProjectPackageName(projectFolder: String): Pair<String, String>? {
