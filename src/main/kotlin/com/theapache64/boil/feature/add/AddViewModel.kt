@@ -33,7 +33,7 @@ class AddViewModel @Inject constructor(
                     println("🔍 Searching for group '${command.groupName}'")
                 }
                 is Resource.Success -> {
-                    println("👌 Found '${command.groupName}'")
+                    println("👌 Found '${command.groupName}'. Below given files connected")
                     val classList = it.data.classList
                     if (classList.isNotEmpty()) {
 
@@ -56,7 +56,9 @@ class AddViewModel @Inject constructor(
                         println("🤷‍♂ ️But there are no classes connected to it.")
                     }
                 }
-                is Resource.Error -> TODO()
+                is Resource.Error -> {
+                    println("Error : ${it.errorData}")
+                }
             }
         }
 
@@ -82,7 +84,6 @@ class AddViewModel @Inject constructor(
         )
         val dirName = packageNamePair.first
         val packageName = packageNamePair.second
-        println("Package name is $packageNamePair")
 
         // Setting param values
         for (file in files) {
@@ -106,6 +107,8 @@ class AddViewModel @Inject constructor(
                 println("Created ${targetFile.absolutePath}")
             }
         }
+
+        println("👍 Integration finished")
     }
 
     private suspend fun downloadFiles(classList: List<String>): Map<String, String> {
