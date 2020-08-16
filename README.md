@@ -19,7 +19,7 @@ wget "https://raw.githubusercontent.com/theapache64/boil/master/install.sh" -q -
 _eg:_
 
 ```shell script
-~/yourAwesomeProject$ boil add sle # To add SingeLiveEvent
+~$ boil add sle # To add SingeLiveEvent
 ```
 
 ## Environment Variables
