@@ -1,4 +1,4 @@
-# boil
+# boil 🔥
 
 Boil is a CLI companion to add boiler plate codes to your gradle project
 
@@ -10,7 +10,7 @@ Copy-paste below command into your terminal to install latest version
 wget "https://raw.githubusercontent.com/theapache64/boil/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
 ```
 
-## Usage
+## Usage ⌨️
 
 - Step 1 : Find group name from [here](https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/edit?usp=sharing)
 
@@ -22,7 +22,7 @@ _eg:_
 ~$ boil add sle # To add SingeLiveEvent
 ```
 
-## Environment Variables
+## Environment Variables 🌍
 
 - `$PACKAGE_NAME`  To get project package name
 
