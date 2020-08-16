@@ -16,8 +16,10 @@ wget "https://raw.githubusercontent.com/theapache64/boil/master/install.sh" -q -
 
 - Step 2 : Execute `boil add <groupName>` from project root
 
+_eg:_
+
 ```shell script
-~$ boil add sle # To add SingeLiveEvent
+~/yourAwesomeProject$ boil add sle # To add SingeLiveEvent
 ```
 
 ## Environment Variables
