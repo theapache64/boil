@@ -104,7 +104,7 @@ class AddViewModel @Inject constructor(
                 println("${targetFile.absolutePath} exists!")
             } else {
                 targetFile.writeText(updatedFileContent)
-                println("Created ${targetFile.absolutePath}")
+                println("➡️ Created ${targetFile.absolutePath}")
             }
         }
 
