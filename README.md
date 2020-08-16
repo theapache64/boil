@@ -2,6 +2,11 @@
 
 Boil is a CLI companion to add boiler plate codes to your gradle project
 
+## Demo
+
+- [Watch Live Demo](https://www.youtube.com/watch?v=PTdgPnIU1tE&feature=youtu.be)
+
+
 ## Install ⚙️
 
 Copy-paste below command into your terminal to install latest version
