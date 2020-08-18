@@ -20,6 +20,7 @@ class NetworkModule {
     @Provides
     fun provideRetrosheetInterceptor(): RetrosheetInterceptor {
         return RetrosheetInterceptor.Builder()
+            .setLogging(true)
             .addSheet(
                 "groups",
                 "id", "group_name", "classes"
