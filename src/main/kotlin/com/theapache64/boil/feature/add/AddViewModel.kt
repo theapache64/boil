@@ -93,8 +93,19 @@ class AddViewModel @Inject constructor(
             val firstLine = fileContent.lines().first()
             require(firstLine.startsWith("package")) { "Invalid file header. All file should start with 'package'. Found '$firstLine'" }
             val fullPackageName = updatedFileContent.lines()[0].split("package")[1].trim()
-            val fileTargetDirPath =
-                "${System.getProperty("user.dir")}${File.separator}$dirName${fullPackageName.replace('.', '/')}"
+            val fileTargetDirPath = when (val fileExt = File(fileName).extension) {
+                ".kt", ".java" -> {
+                    "${System.getProperty("user.dir")}${File.separator}$dirName${fullPackageName.replace('.', '/')}"
+                }
+
+                ".xml" -> {
+                    require(fileName.contains("-")) { "XML file name should contain '-' to sep target res directory" }
+                    val fs = fileName.split("-")
+                    val subDirName = fs[0]
+                    "${System.getProperty("user.dir")}/app/src/main/res/$subDirName"
+                }
+                else -> throw IllegalArgumentException("Unknown file type '$fileExt'")
+            }
             val fileTargetDir = File(fileTargetDirPath)
             if (!fileTargetDir.exists()) {
                 fileTargetDir.mkdirs()
