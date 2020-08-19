@@ -48,6 +48,12 @@ class AddViewModel @Inject constructor(
 
                         if (shouldStartIntegration) {
                             startIntegration(classList)
+
+                            // Printing instructions
+                            val instructions = it.data.instructions
+                            if (instructions.isNotEmpty()) {
+                                println("\nInstructions:\n$instructions")
+                            }
                         } else {
                             println("❌ Integration cancelled")
                         }

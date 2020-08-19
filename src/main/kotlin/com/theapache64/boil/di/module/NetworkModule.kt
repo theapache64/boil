@@ -22,7 +22,7 @@ class NetworkModule {
         return RetrosheetInterceptor.Builder()
             .addSheet(
                 "groups",
-                "id", "group_name", "classes"
+                "id", "group_name", "classes", "instructions"
             )
             .build()
     }

@@ -8,6 +8,8 @@ import com.squareup.moshi.Json
  */
 @JsonClass(generateAdapter = true)
 data class Group(
+    @Json(name = "instructions")
+    val instructions: String,
     @Json(name = "classes")
     val classes: String, // SingleLiveEvent.kt
     @Json(name = "group_name")
