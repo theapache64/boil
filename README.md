@@ -1,6 +1,6 @@
 # boil 🔥
 
-Boil is a CLI companion to add boiler plate codes to your gradle project
+Boil is a CLI companion to add boilerplate codes to your gradle project
 
 ## Demo
 
@@ -9,7 +9,7 @@ Boil is a CLI companion to add boiler plate codes to your gradle project
 
 ## Install ⚙️
 
-Copy-paste below command into your terminal to install latest version
+Copy-paste below command into your terminal to install the latest version
 
 ```shell script
 wget "https://raw.githubusercontent.com/theapache64/boil/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
@@ -26,6 +26,13 @@ _eg:_
 ```shell script
 ~$ boil add sle # To add SingeLiveEvent
 ```
+
+## How to contribute more boilerplate codes?
+
+- Add files to `files` directory
+- Open a PR 
+
+That's it!
 
 ## Environment Variables 🌍
 

@@ -1,8 +1,0 @@
-[
-  {
-    "group_name": "sle",
-    "classes": [
-      "SingleLiveEvent.kt"
-    ]
-  }
-]

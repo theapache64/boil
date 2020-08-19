@@ -10,13 +10,13 @@ import com.squareup.moshi.Json
 data class Group(
     @Json(name = "instructions")
     val instructions: String,
-    @Json(name = "classes")
-    val classes: String, // SingleLiveEvent.kt
+    @Json(name = "files")
+    val files: String, // SingleLiveEvent.kt
     @Json(name = "group_name")
     val groupName: String, // Group Name
     @Json(name = "id")
     val id: Int // 1
 ) {
     @Transient
-    val classList = classes.split("\n")
+    val classList = files.split("\n")
 }
