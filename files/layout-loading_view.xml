@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Error Icon-->
+        <Button
+            android:id="@+id/b_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/action_retry"
+            app:layout_constraintEnd_toEndOf="@id/tv_message"
+            app:layout_constraintStart_toStartOf="@id/tv_message"
+            app:layout_constraintTop_toBottomOf="@id/tv_message" />
+
+        <!--Progress-->
+        <ImageView
+            android:id="@+id/iv_error"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_warning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/b_icons"
+            app:layout_constraintStart_toStartOf="@id/b_icons"
+            app:layout_constraintTop_toBottomOf="@id/b_icons"
+            tools:text="Loading..." />
+
+        <!--Message-->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/b_icons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="clpb,iv_error" />
+
+        <!--Retry Button-->
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/clpb"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+    </data>
+</layout>
