@@ -12,7 +12,7 @@ import retrofit2.http.Url
  */
 interface Api {
 
-    @Read("SELECT * WHERE group_name = :groupName")
+    @Read("SELECT * WHERE group_name contains :groupName")
     @GET("groups")
     fun getGroup(
         @Query("groupName") groupName: String

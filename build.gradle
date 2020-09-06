@@ -6,11 +6,12 @@ apply plugin: 'kotlin-kapt'
 
 
 group 'com.theapache64'
-version '1.0.0-alpha03'
+version '1.0.0-alpha04'
 
 repositories {
     mavenCentral()
     mavenLocal()
+    jcenter()
 }
 
 dependencies {
@@ -45,7 +46,7 @@ dependencies {
 	// Converter: Moshi : A Retrofit Converter which uses Moshi for serialization.
 	implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
-    implementation 'com.theapache64:retrosheet:1.2.0'
+    implementation 'com.theapache64:retrosheet:1.2.1'
 
 	// Moshi Kotlin Codegen : Moshi Kotlin Codegen
 	kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.3'

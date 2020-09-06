@@ -33,33 +33,39 @@ class AddViewModel @Inject constructor(
                     println("🔍 Searching for group '${command.groupName}'")
                 }
                 is Resource.Success -> {
-                    println("👌 Found '${command.groupName}'. Below given files connected")
-                    val classList = it.data.classList
-                    if (classList.isNotEmpty()) {
+                    val isExactGroupName = it.data.groupName == command.groupName
 
-                        classList.forEach {
-                            println("    -> $it")
-                        }
+                    if (isExactGroupName) {
+                        println("👌 Found '${command.groupName}'. Below given files connected")
+                        val classList = it.data.classList
+                        if (classList.isNotEmpty()) {
 
-                        val shouldStartIntegration = InputUtils.getString(
-                            "⌨ Type 'y' to start integration",
-                            true
-                        ).trim().toLowerCase() == "y"
-
-                        if (shouldStartIntegration) {
-                            startIntegration(classList)
-
-                            // Printing instructions
-                            val instructions = it.data.instructions
-                            if (instructions.isNotEmpty()) {
-                                println("\nInstructions:\n$instructions")
+                            classList.forEach {
+                                println("    -> $it")
                             }
-                        } else {
-                            println("❌ Integration cancelled")
-                        }
 
+                            val shouldStartIntegration = InputUtils.getString(
+                                "⌨ Type 'y' to start integration",
+                                true
+                            ).trim().toLowerCase() == "y"
+
+                            if (shouldStartIntegration) {
+                                startIntegration(classList)
+
+                                // Printing instructions
+                                val instructions = it.data.instructions
+                                if (instructions.isNotEmpty()) {
+                                    println("\nInstructions:\n$instructions")
+                                }
+                            } else {
+                                println("❌ Integration cancelled")
+                            }
+
+                        } else {
+                            println("🤷‍♂ ️But there are no classes connected to it.")
+                        }
                     } else {
-                        println("🤷‍♂ ️But there are no classes connected to it.")
+                        println("🤷‍♂ Couldn't find any group with '${command.groupName}'. Did you mean '${it.data.groupName}'?")
                     }
                 }
                 is Resource.Error -> {
