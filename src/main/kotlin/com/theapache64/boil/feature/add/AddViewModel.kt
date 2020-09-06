@@ -113,6 +113,10 @@ class AddViewModel @Inject constructor(
                     fileName = fs[1]
                     "${System.getProperty("user.dir")}/app/src/main/res/$subDirName"
                 }
+
+                "ttf", "otf" -> {
+                    "${System.getProperty("user.dir")}/app/src/main/assets/fonts"
+                }
                 else -> throw IllegalArgumentException("Unknown file type '$fileExt'!")
             }
             val fileTargetDir = File(fileTargetDirPath)
