@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.di.modules
+package $PACKAGE_NAME.di.module
 
 import android.content.Context
 import android.content.SharedPreferences
