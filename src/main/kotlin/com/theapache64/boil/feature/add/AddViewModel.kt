@@ -21,6 +21,14 @@ class AddViewModel @Inject constructor(
 
     companion object {
         private const val ENV_VAR_PACKAGE_NAME = "${'$'}PACKAGE_NAME"
+
+        private val SUPPORTED_TEXT_FILES = arrayOf(
+            "kt",
+            "java",
+            "txt",
+            "xml",
+            "json"
+        )
     }
 
     override suspend fun call(command: AddView): Int {
@@ -77,10 +85,10 @@ class AddViewModel @Inject constructor(
         return 0
     }
 
-    private suspend fun startIntegration(classList: List<String>) {
+    private suspend fun startIntegration(fileList: List<String>) {
         println("⬇️ Downloading files")
-        val files = downloadFiles(classList)
-        require(files.size == classList.size) { "File count mismatch" }
+        val files = downloadFiles(fileList)
+        require(files.size == fileList.size) { "File count mismatch" }
         onFilesDownloaded(files)
     }
 
@@ -144,6 +152,8 @@ class AddViewModel @Inject constructor(
     private suspend fun downloadFiles(classList: List<String>): Map<String, String> {
         val fileContent = mutableMapOf<String, String>()
         for (fileName in classList) {
+            println(fileName)
+
             filesRepo.getFile(fileName).collect {
                 when (it) {
                     is Resource.Loading -> {
