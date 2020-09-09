@@ -8,6 +8,7 @@ import com.theapache64.boil.utils.InputUtils
 import com.theapache64.boil.utils.calladapter.flow.Resource
 import kotlinx.coroutines.flow.collect
 import java.io.File
+import java.io.FileOutputStream
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -107,43 +108,49 @@ class AddViewModel @Inject constructor(
 
         // Setting param values
         for (file in files) {
+
             var fileName = file.key
             val fileContent = file.value
             val updatedFileContent = fileContent.replace(ENV_VAR_PACKAGE_NAME, packageName)
+            val fileExt = File(fileName).extension
 
+            if (SUPPORTED_TEXT_FILES.contains(fileExt)) {
+                // text file
+                val fileTargetDirPath = when (fileExt) {
+                    "kt", "java" -> {
+                        val firstLine = fileContent.lines().first()
+                        require(firstLine.startsWith("package")) { "Invalid file header. All file should start with 'package'. Found '$firstLine'" }
+                        val fullPackageName = updatedFileContent.lines()[0].split("package")[1].trim()
+                        "${System.getProperty("user.dir")}${File.separator}$dirName${fullPackageName.replace('.', '/')}"
+                    }
 
-            val fileTargetDirPath = when (val fileExt = File(fileName).extension) {
-                "kt", "java" -> {
-                    val firstLine = fileContent.lines().first()
-                    require(firstLine.startsWith("package")) { "Invalid file header. All file should start with 'package'. Found '$firstLine'" }
-                    val fullPackageName = updatedFileContent.lines()[0].split("package")[1].trim()
-                    "${System.getProperty("user.dir")}${File.separator}$dirName${fullPackageName.replace('.', '/')}"
+                    "xml" -> {
+                        require(fileName.contains("-")) { "XML file name should contain '-' to sep target res directory" }
+                        val fs = fileName.split("-")
+                        val subDirName = fs[0]
+                        fileName = fs[1]
+                        "${System.getProperty("user.dir")}/app/src/main/res/$subDirName"
+                    }
+
+                    else -> throw IllegalArgumentException("Unknown file type '$fileExt'!")
+                }
+                val fileTargetDir = File(fileTargetDirPath)
+                if (!fileTargetDir.exists()) {
+                    fileTargetDir.mkdirs()
+                }
+                val targetFile = File(fileTargetDirPath + File.separator + fileName)
+                if (targetFile.exists()) {
+                    println("${targetFile.absolutePath} exists!")
+                } else {
+                    targetFile.writeText(updatedFileContent)
+                    println("➡️ Created ${targetFile.absolutePath}")
                 }
 
-                "xml" -> {
-                    require(fileName.contains("-")) { "XML file name should contain '-' to sep target res directory" }
-                    val fs = fileName.split("-")
-                    val subDirName = fs[0]
-                    fileName = fs[1]
-                    "${System.getProperty("user.dir")}/app/src/main/res/$subDirName"
-                }
-
-                "ttf", "otf" -> {
-                    "${System.getProperty("user.dir")}/app/src/main/assets/fonts"
-                }
-                else -> throw IllegalArgumentException("Unknown file type '$fileExt'!")
-            }
-            val fileTargetDir = File(fileTargetDirPath)
-            if (!fileTargetDir.exists()) {
-                fileTargetDir.mkdirs()
-            }
-            val targetFile = File(fileTargetDirPath + File.separator + fileName)
-            if (targetFile.exists()) {
-                println("${targetFile.absolutePath} exists!")
             } else {
-                targetFile.writeText(updatedFileContent)
-                println("➡️ Created ${targetFile.absolutePath}")
+                // raw file
+                println("➡️ Created $fileContent")
             }
+
         }
 
         println("👍 Integration finished")
@@ -151,26 +158,51 @@ class AddViewModel @Inject constructor(
 
     private suspend fun downloadFiles(classList: List<String>): Map<String, String> {
         val fileContent = mutableMapOf<String, String>()
+
         for (fileName in classList) {
-            println(fileName)
 
-            filesRepo.getFile(fileName).collect {
-                when (it) {
-                    is Resource.Loading -> {
-                        println("⬇️ Getting file '$fileName'...")
+            val extension = File(fileName).extension
+
+
+            if (SUPPORTED_TEXT_FILES.contains(extension)) {
+                filesRepo.getFile(fileName).collect {
+                    when (it) {
+                        is Resource.Loading -> {
+                            println("⬇️ Getting file '$fileName'...")
+                        }
+
+                        is Resource.Success -> {
+                            println("⬇️ File downloaded '$fileName'")
+                            fileContent[fileName] = it.data
+                        }
+
+                        is Resource.Error -> {
+                            println("❌ Failed to get file '$fileName' Due to '${it.errorData}'. Cancelling integration...")
+                            exitProcess(0)
+                        }
                     }
 
-                    is Resource.Success -> {
-                        println("⬇️ File downloaded '$fileName'")
-                        fileContent[fileName] = it.data
-                    }
-
-                    is Resource.Error -> {
-                        println("❌ Failed to get file '$fileName' Due to '${it.errorData}'. Cancelling integration...")
-                        exitProcess(0)
+                }
+            } else {
+                println("Downloading RAW file...")
+                filesRepo.downloadFile(fileName).let {
+                    if (it.code() == 200) {
+                        val targetDir = when (extension) {
+                            "ttf", "otf" -> {
+                                "${System.getProperty("user.dir")}/app/src/main/assets/fonts"
+                            }
+                            else -> throw IllegalArgumentException("Unknown RAW file type '$extension'!")
+                        }
+                        val file = File("$targetDir/$fileName")
+                        if (file.exists()) {
+                            file.delete()
+                        }
+                        file.parentFile.mkdirs()
+                        @Suppress("BlockingMethodInNonBlockingContext")
+                        file.writeBytes(it.body()!!.bytes())
+                        fileContent[fileName] = file.absolutePath
                     }
                 }
-
             }
         }
         return fileContent

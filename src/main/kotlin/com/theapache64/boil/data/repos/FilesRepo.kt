@@ -4,6 +4,8 @@ import com.theapache64.boil.data.remote.Api
 import com.theapache64.boil.utils.calladapter.flow.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import okhttp3.ResponseBody
+import retrofit2.Response
 import javax.inject.Inject
 
 /**
@@ -20,5 +22,10 @@ class FilesRepo @Inject constructor(
     fun getFile(fileName: String): Flow<Resource<String>> {
         val fullUrl = "$SOURCE_BASE$fileName"
         return api.getFile(fullUrl)
+    }
+
+    suspend fun downloadFile(fileName: String): Response<ResponseBody> {
+        val fullUrl = "$SOURCE_BASE$fileName"
+        return api.downloadFile(fullUrl)
     }
 }
