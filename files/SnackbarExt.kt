@@ -1,4 +1,4 @@
-package com.theapache64.nemo.utils.extensions
+package $PACKAGE_NAME.utils.extensions
 
 import android.view.View
 import androidx.annotation.StringRes
