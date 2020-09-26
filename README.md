@@ -43,3 +43,7 @@ That's it!
 ```shell script
 wget "https://raw.githubusercontent.com/theapache64/boil/master/update.sh" -q --show-progress -O update.sh && sh update.sh
 ```
+
+## Author ✍️
+
+- theapache64
