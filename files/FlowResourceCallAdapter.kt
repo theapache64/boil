@@ -23,7 +23,7 @@ class FlowResourceCallAdapter<R>(
     override fun responseType() = responseType
 
     @ExperimentalCoroutinesApi
-    override fun adapt(call: Call<R>): Flow<Resource<R>> = flow {
+    override fun adapt(call: Call<R>) = flow<Resource<R>> {
 
         // Firing loading resource
         emit(Resource.Loading<R>())
