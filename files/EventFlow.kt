@@ -1,4 +1,4 @@
-package $PACKAGE_NAME$.utils.flow
+package $PACKAGE_NAME.utils.flow
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 
