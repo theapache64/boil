@@ -4,6 +4,8 @@ Boil is a CLI companion to add boilerplate codes to your gradle project
 
 ## Demo
 
+![](demo.gif)
+
 - [Watch Live Demo](https://www.youtube.com/watch?v=PTdgPnIU1tE&feature=youtu.be)
 
 
