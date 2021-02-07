@@ -9,7 +9,7 @@ import java.util.concurrent.Callable
  */
 @CommandLine.Command(
     name = "boil",
-    version = ["v1.0.0-alpha04"],
+    version = ["v1.0.0-alpha05"],
     mixinStandardHelpOptions = true,
     subcommands = [
         AddView::class

@@ -23,6 +23,13 @@ class GradleUtilsTest {
     }
 
     @Test
+    fun `kts project packageName`() {
+        val composeDesktopDir = "/home/theapache64/Documents/projects/decompose-desktop-example"
+        val packageName = GradleUtils.getProjectPackageName(composeDesktopDir)
+        packageName?.second.should.equal("com.theapache64.dde")
+    }
+
+    @Test
     fun `no package name`() {
         val nemoDir = "/home/theapache64/Documents/projects"
         val packageName = GradleUtils.getProjectPackageName(nemoDir)

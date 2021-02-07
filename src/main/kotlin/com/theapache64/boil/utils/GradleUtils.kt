@@ -1,6 +1,8 @@
 package com.theapache64.boil.utils
 
-import java.io.*
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.IOException
 import java.util.regex.Pattern
 
 
@@ -18,10 +20,19 @@ object GradleUtils {
 
     fun getProjectPackageName(projectFolder: String): Pair<String, String>? {
         var gradleFile = File("$projectFolder/app/build.gradle")
+
         if (!gradleFile.exists()) {
             // not an android project. so provide support for java gradle project
             gradleFile = File("$projectFolder/build.gradle")
+
+            if (!gradleFile.exists()) {
+                // # its not java gradle project, lets try kts gradle file
+                gradleFile = File("$projectFolder/build.gradle.kts")
+            }
         }
+
+        println("Gradle file is ${gradleFile.absolutePath}")
+
         return try {
             var packageName: String? = null
 
@@ -42,7 +53,7 @@ object GradleUtils {
 
             if (packageName == null) {
                 // Try getting it from directory structure
-                val loopFromDir = File(START_DIR_GRADLE)
+                val loopFromDir = File(projectFolder + File.separator + START_DIR_GRADLE)
                 val loopEndDir = getLoopEndDir(loopFromDir).absolutePath
                 val i1 = loopEndDir.indexOf(START_DIR_GRADLE) + START_DIR_GRADLE.length
                 packageName = loopEndDir.substring(i1).replace('/', '.')
