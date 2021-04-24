@@ -1,3 +1,6 @@
+package $PACKAGE_NAME.util
+
+
 import java.io.File
 import java.util.zip.ZipFile
 
