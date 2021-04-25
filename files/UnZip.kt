@@ -1,28 +1,29 @@
 package $PACKAGE_NAME.util
 
 
-import java.io.File
+import java.nio.file.Path
 import java.util.zip.ZipFile
+import kotlin.io.path.*
 
-fun File.unzip(
-    outputDir: File = getDefaultOutputDir(this)
-): File {
+fun Path.unzip(
+    outputDir: Path = getDefaultOutputDir(this)
+): Path {
     // Delete existing first
-    outputDir.deleteRecursively()
+    outputDir.toFile().deleteRecursively()
 
-    ZipFile(this).use { zip ->
+    ZipFile(this.toFile()).use { zip ->
         zip.entries().asSequence().forEach { entry ->
             if (!entry.isDirectory) {
                 zip.getInputStream(entry).use { input ->
-                    val outputFile = File("${outputDir.absolutePath}${File.separator}${entry.name}")
+                    val outputFile = outputDir / entry.name
 
                     with(outputFile) {
-                        if (!outputFile.parentFile.exists()) {
-                            parentFile.mkdirs()
+                        if (!outputFile.parent.exists()) {
+                            parent.createDirectories()
                         }
                     }
 
-                    outputFile.createNewFile()
+                    outputFile.createFile()
                     outputFile.outputStream().use { output ->
                         input.copyTo(output)
                     }
@@ -34,6 +35,6 @@ fun File.unzip(
     return outputDir
 }
 
-private fun getDefaultOutputDir(inputZipFile: File): File {
-    return File("${inputZipFile.parentFile.absolutePath}${File.separator}${inputZipFile.nameWithoutExtension}")
+private fun getDefaultOutputDir(inputZipPath: Path): Path {
+    return inputZipPath.parent / inputZipPath.nameWithoutExtension
 }
