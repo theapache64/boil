@@ -1,4 +1,4 @@
-package com.theapache64.boil.utils.calladapter.flow
+package com.theapache64.boil.util.calladapter.flow
 
 
 import kotlinx.coroutines.flow.Flow

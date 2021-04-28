@@ -1,6 +1,6 @@
 package com.theapache64.boil.data.remote
 
-import com.theapache64.boil.utils.calladapter.flow.Resource
+import com.theapache64.boil.util.calladapter.flow.Resource
 import com.theapache64.retrosheet.core.Read
 import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody

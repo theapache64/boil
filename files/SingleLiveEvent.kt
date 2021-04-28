@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils.livedata
+package $PACKAGE_NAME.util.livedata
 
 import android.util.Log
 import androidx.annotation.MainThread

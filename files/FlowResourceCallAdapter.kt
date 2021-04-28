@@ -1,7 +1,7 @@
-package $PACKAGE_NAME.utils.calladapter.flow
+package $PACKAGE_NAME.util.calladapter.flow
 
-import $PACKAGE_NAME.utils.calladapter.flow.Resource.Error
-import $PACKAGE_NAME.utils.calladapter.flow.Resource.Success
+import $PACKAGE_NAME.util.calladapter.flow.Resource.Error
+import $PACKAGE_NAME.util.calladapter.flow.Resource.Success
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

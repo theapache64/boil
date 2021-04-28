@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils.extensions
+package $PACKAGE_NAME.util.extensions
 
 import android.content.Context
 import android.widget.Toast

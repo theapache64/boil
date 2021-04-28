@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils.calladapter.flow
+package $PACKAGE_NAME.util.calladapter.flow
 
 /**
  * Created by theapache64 : Jul 26 Sun,2020 @ 13:22

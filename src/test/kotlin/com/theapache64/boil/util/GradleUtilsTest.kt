@@ -1,4 +1,4 @@
-package com.theapache64.boil.utils
+package com.theapache64.boil.util
 
 import com.winterbe.expekt.should
 import org.junit.Test

@@ -3,7 +3,7 @@ package $PACKAGE_NAME.feature.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import $PACKAGE_NAME.utils.livedata.SingleLiveEvent
+import $PACKAGE_NAME.util.livedata.SingleLiveEvent
 
 /**
  * Created by theapache64 : Jul 26 Sun,2020 @ 22:07

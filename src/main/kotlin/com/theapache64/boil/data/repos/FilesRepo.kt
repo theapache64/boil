@@ -1,7 +1,7 @@
 package com.theapache64.boil.data.repos
 
 import com.theapache64.boil.data.remote.Api
-import com.theapache64.boil.utils.calladapter.flow.Resource
+import com.theapache64.boil.util.calladapter.flow.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import okhttp3.ResponseBody

@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils.calladapter.flow
+package $PACKAGE_NAME.util.calladapter.flow
 
 
 import kotlinx.coroutines.flow.Flow

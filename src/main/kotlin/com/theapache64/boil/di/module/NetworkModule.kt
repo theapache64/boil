@@ -1,7 +1,7 @@
 package com.theapache64.boil.di.module
 
 import com.theapache64.boil.data.remote.Api
-import com.theapache64.boil.utils.calladapter.flow.FlowResourceCallAdapterFactory
+import com.theapache64.boil.util.calladapter.flow.FlowResourceCallAdapterFactory
 import com.theapache64.retrosheet.RetrosheetInterceptor
 import dagger.Module
 import dagger.Provides

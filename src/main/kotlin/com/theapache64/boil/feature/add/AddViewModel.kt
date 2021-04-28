@@ -3,9 +3,9 @@ package com.theapache64.boil.feature.add
 import com.theapache64.boil.base.BaseViewModel
 import com.theapache64.boil.data.repos.FilesRepo
 import com.theapache64.boil.data.repos.RegistryRepo
-import com.theapache64.boil.utils.GradleUtils
-import com.theapache64.boil.utils.InputUtils
-import com.theapache64.boil.utils.calladapter.flow.Resource
+import com.theapache64.boil.util.GradleUtils
+import com.theapache64.boil.util.InputUtils
+import com.theapache64.boil.util.calladapter.flow.Resource
 import kotlinx.coroutines.flow.collect
 import java.io.File
 import java.io.FileOutputStream

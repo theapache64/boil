@@ -1,4 +1,4 @@
-package com.theapache64.boil.utils
+package com.theapache64.boil.util
 
 import java.util.*
 

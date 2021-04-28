@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import $PACKAGE_NAME.utils.extensions.snackBar
-import $PACKAGE_NAME.utils.extensions.toast
+import $PACKAGE_NAME.util.extensions.snackBar
+import $PACKAGE_NAME.util.extensions.toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 
