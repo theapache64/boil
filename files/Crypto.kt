@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils
+package $PACKAGE_NAME.util
 
 
 import java.util.*

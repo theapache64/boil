@@ -1,4 +1,4 @@
-package $PACKAGE_NAME.utils
+package $PACKAGE_NAME.util
 
 import $PACKAGE_NAME.Main
 import java.io.File
