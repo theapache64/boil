@@ -41,12 +41,6 @@ That's it!
 
 - `$PACKAGE_NAME`  To get project package name
 
-## Update ⤴️
-
-```shell script
-wget "https://raw.githubusercontent.com/theapache64/boil/master/update.sh" -q --show-progress -O update.sh && sh update.sh
-```
-
 ## Author ✍️
 
 - theapache64
