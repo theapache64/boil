@@ -13,11 +13,10 @@ Boil is a CLI companion to add boilerplate codes to your gradle project
 
 ## Install ⚙️
 
-Copy-paste below command into your terminal to install the latest version
 
-```shell script
-wget "https://raw.githubusercontent.com/theapache64/boil/master/install.sh" -q --show-progress -O install.sh && sh install.sh && source ~/.bashrc
-```
+````shell
+sudo npm install -g boil-tool
+````
 
 ## Usage ⌨️
 

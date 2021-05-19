@@ -1,0 +1,25 @@
+{
+  "bin": {
+    "boil": "jdeploy-bundle/jdeploy.js"
+  },
+  "author": "",
+  "description": "",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": "",
+  "version": "1.0.0",
+  "jdeploy": {
+    "jar": "boil.main.jar"
+  },
+  "dependencies": {
+    "shelljs": "0.8.4"
+  },
+  "license": "ISC",
+  "name": "boil-tool",
+  "files": [
+    "jdeploy-bundle"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

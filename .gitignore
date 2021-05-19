@@ -151,3 +151,6 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,intellij,gradle
 SecretConstants.kt
+node_modules
+jdeploy-bundle
+package-lock.json
