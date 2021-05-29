@@ -13,7 +13,7 @@ val GoogleSans = FontFamily(
     Font("fonts/GoogleSans-Bold.ttf", FontWeight.Bold),
 )
 
-val $PACKAGE_NAME_Typography = Typography(
+val Typography = Typography(
 
     defaultFontFamily = GoogleSans,
 
