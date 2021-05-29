@@ -8,7 +8,6 @@ import com.theapache64.boil.util.InputUtils
 import com.theapache64.boil.util.calladapter.flow.Resource
 import kotlinx.coroutines.flow.collect
 import java.io.File
-import java.io.FileOutputStream
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -74,7 +73,20 @@ class AddViewModel @Inject constructor(
                             println("🤷‍♂ ️But there are no classes connected to it.")
                         }
                     } else {
-                        println("🤷‍♂ Couldn't find any group with '${command.groupName}'. Did you mean '${it.data.groupName}'?")
+                        val userResp = InputUtils.getString(
+                            "🤷‍♂ Couldn't find any group with '${command.groupName}'. Did you mean '${it.data.groupName}'? (y/n)",
+                            false
+                        )
+
+                        if (userResp.equals("y", ignoreCase = true) || userResp.equals("yes", ignoreCase = true)) {
+                            // Retry with suggestion
+                            val request = AddView().apply {
+                                groupName = it.data.groupName
+                            }
+                            call(
+                                request
+                            )
+                        }
                     }
                 }
                 is Resource.Error -> {
