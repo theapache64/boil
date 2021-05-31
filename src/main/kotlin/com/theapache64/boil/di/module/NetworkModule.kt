@@ -16,6 +16,9 @@ import javax.inject.Singleton
  */
 @Module
 class NetworkModule {
+    companion object{
+        const val REGISTRY_SHEET_URL = "https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/"
+    }
 
     @Provides
     fun provideRetrosheetInterceptor(): RetrosheetInterceptor {
@@ -39,7 +42,7 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/")
+            .baseUrl(REGISTRY_SHEET_URL)
             .addCallAdapterFactory(FlowResourceCallAdapterFactory())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())

@@ -1,6 +1,7 @@
 package com.theapache64.boil.feature.core
 
 import com.theapache64.boil.feature.add.AddView
+import com.theapache64.boil.feature.registry.RegistryView
 import picocli.CommandLine
 import java.util.concurrent.Callable
 
@@ -12,7 +13,8 @@ import java.util.concurrent.Callable
     version = ["v1.0.0-alpha05"],
     mixinStandardHelpOptions = true,
     subcommands = [
-        AddView::class
+        AddView::class,
+        RegistryView::class
     ]
 )
 class Boil : Callable<Int> {
