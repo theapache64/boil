@@ -201,7 +201,7 @@ class AddViewModel @Inject constructor(
                     if (it.code() == 200) {
                         val targetDir = when (extension) {
                             "ttf", "otf" -> {
-                                "${System.getProperty("user.dir")}/app/src/main/assets/fonts"
+                                "${System.getProperty("user.dir")}/app/src/main/res/font"
                             }
                             else -> throw IllegalArgumentException("Unknown RAW file type '$extension'!")
                         }
