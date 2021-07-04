@@ -7,10 +7,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.unit.sp
 
+// Choose any of the below
+
+// Desktop
 val GoogleSans = FontFamily(
     Font("fonts/GoogleSans-Regular.ttf", FontWeight.Normal),
     Font("fonts/GoogleSans-Medium.ttf", FontWeight.Medium),
     Font("fonts/GoogleSans-Bold.ttf", FontWeight.Bold),
+)
+
+// Mobile
+val GoogleSans = FontFamily(
+    Font(R.font.google_sans_regular, FontWeight.Normal),
+    Font(R.font.google_sans_medium, FontWeight.Medium),
+    Font(R.font.google_sans_bold, FontWeight.Bold),
 )
 
 val Typography = Typography(
