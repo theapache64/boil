@@ -2,7 +2,7 @@
 
 > Boil makes copy-paste even easier 🤗
 
-Boil is a CLI companion to add boilerplate codes to your gradle project
+Boil is a CLI partner for adding boiler plate codes to Gradle based projects.
 
 ## Demo
 
