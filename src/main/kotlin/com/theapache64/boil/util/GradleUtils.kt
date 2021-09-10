@@ -18,6 +18,9 @@ object GradleUtils {
     private const val START_DIR_ANDROID = "app/src/main/java/"
     private const val START_DIR_GRADLE = "src/main/kotlin/"
 
+    /**
+     * TODO: Needs to improve package collection algorithm.
+     */
     fun getProjectPackageName(projectFolder: String): Pair<String, String>? {
         var gradleFile = File("$projectFolder/app/build.gradle")
 
