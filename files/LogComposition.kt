@@ -11,6 +11,7 @@ class Ref(var value: Int)
  * Note the inline function below which ensures that this function is essentially
  * copied at the call site to ensure that its logging only recompositions from the
  * original call site.
+ * Author: @vinaygaba
  */
 @Composable
 @Suppress("NOTHING_TO_INLINE")
