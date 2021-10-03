@@ -17,11 +17,13 @@ object GradleUtils {
 
     private const val START_DIR_ANDROID = "app/src/main/java/"
     private const val START_DIR_GRADLE = "src/main/kotlin/"
+    const val START_DIR_TEST = "app/src/test/java"
+    private const val START_DIR_ANDROID_TEST = "app/src/androidTest/java"
 
     /**
      * TODO: Needs to improve package collection algorithm.
      */
-    fun getProjectPackageName(projectFolder: String): Pair<String, String>? {
+    fun getProjectPackageName(fileName: String, projectFolder: String): Pair<String, String>? {
         var gradleFile = File("$projectFolder/app/build.gradle")
 
         if (!gradleFile.exists()) {
@@ -47,7 +49,15 @@ object GradleUtils {
                         val matcher = PACKAGE_REGEX.matcher(line.trim())
                         if (matcher.find()) {
                             packageName = matcher.group(1)
-                            dirName = START_DIR_ANDROID
+                            dirName = if (fileName.contains("-")) {
+                                when (val targetDir = fileName.split("-")[0]) {
+                                    "test" -> START_DIR_TEST
+                                    "androidTest" -> START_DIR_ANDROID_TEST
+                                    else -> error("Undefined targetDir '$targetDir'")
+                                }
+                            } else {
+                                START_DIR_ANDROID
+                            }
                             break
                         }
                     }

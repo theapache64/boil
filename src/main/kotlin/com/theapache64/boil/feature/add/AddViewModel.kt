@@ -126,17 +126,17 @@ class AddViewModel @Inject constructor(
         println("👌 All files downloaded. Initializing integration...")
         val currentDir = System.getProperty("user.dir")
 
-        // Getting param values
-        val packageNamePair = GradleUtils.getProjectPackageName(currentDir) ?: throw IllegalArgumentException(
-            """
-            Failed to get package name from $currentDir
-        """.trimIndent()
-        )
-        val dirName = packageNamePair.first
-        val packageName = packageNamePair.second
 
         // Setting param values
         for (file in files) {
+
+            // Getting param values
+            val packageNamePair = GradleUtils.getProjectPackageName(file.key, currentDir) ?: throw IllegalArgumentException(
+                """
+            Failed to get package name from $currentDir
+        """.trimIndent()
+            )
+            val (dirName, packageName) = packageNamePair
 
             var fileName = file.key
             val fileContent = file.value
