@@ -17,8 +17,8 @@ object GradleUtils {
 
     private const val START_DIR_ANDROID = "app/src/main/java/"
     private const val START_DIR_GRADLE = "src/main/kotlin/"
-    const val START_DIR_TEST = "app/src/test/java"
-    private const val START_DIR_ANDROID_TEST = "app/src/androidTest/java"
+    private const val START_DIR_TEST = "app/src/test/java/"
+    private const val START_DIR_ANDROID_TEST = "app/src/androidTest/java/"
 
     /**
      * TODO: Needs to improve package collection algorithm.

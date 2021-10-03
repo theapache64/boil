@@ -157,17 +157,21 @@ class AddViewModel @Inject constructor(
                         require(fileName.contains("-")) { "XML file name should contain '-' to sep target res directory" }
                         val fs = fileName.split("-")
                         val subDirName = fs[0]
-                        fileName = fs[1]
                         "${System.getProperty("user.dir")}/app/src/main/res/$subDirName"
                     }
 
                     else -> throw IllegalArgumentException("Unknown file type '$fileExt'!")
                 }
+                val finalFileName = if(fileName.contains("-")){
+                    fileName.split("-")[1]
+                }else{
+                    fileName
+                }
                 val fileTargetDir = File(fileTargetDirPath)
                 if (!fileTargetDir.exists()) {
                     fileTargetDir.mkdirs()
                 }
-                val targetFile = File(fileTargetDirPath + File.separator + fileName)
+                val targetFile = File(fileTargetDirPath + File.separator + finalFileName)
                 if (targetFile.exists()) {
                     println("${targetFile.absolutePath} exists!")
                 } else {
@@ -201,7 +205,6 @@ class AddViewModel @Inject constructor(
         for (fileName in classList) {
 
             val extension = File(fileName).extension
-
 
             if (SUPPORTED_TEXT_FILES.contains(extension)) {
                 filesRepo.getFile(fileName).collect {
