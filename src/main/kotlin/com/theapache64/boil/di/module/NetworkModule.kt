@@ -1,8 +1,8 @@
 package com.theapache64.boil.di.module
 
+import com.github.theapache64.retrosheet.RetrosheetInterceptor
 import com.theapache64.boil.data.remote.Api
 import com.theapache64.boil.util.calladapter.flow.FlowResourceCallAdapterFactory
-import com.theapache64.retrosheet.RetrosheetInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -16,8 +16,9 @@ import javax.inject.Singleton
  */
 @Module
 class NetworkModule {
-    companion object{
-        const val REGISTRY_SHEET_URL = "https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/"
+    companion object {
+        const val REGISTRY_SHEET_URL =
+            "https://docs.google.com/spreadsheets/d/1OF384yi-k3iBgiyLnhYDAoYAV8wJGCh2yEqm3MfQQko/"
     }
 
     @Provides

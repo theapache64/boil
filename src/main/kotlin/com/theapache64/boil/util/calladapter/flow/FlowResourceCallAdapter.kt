@@ -2,6 +2,7 @@ package com.theapache64.boil.util.calladapter.flow
 
 import com.theapache64.boil.util.calladapter.flow.Resource.Error
 import com.theapache64.boil.util.calladapter.flow.Resource.Success
+import jdk.jfr.internal.OldObjectSample.emit
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -23,10 +24,10 @@ class FlowResourceCallAdapter<R>(
     override fun responseType() = responseType
 
     @ExperimentalCoroutinesApi
-    override fun adapt(call: Call<R>): Flow<Resource<R>> = flow {
+    override fun adapt(call: Call<R>) = flow<Resource<R>> {
 
         // Firing loading resource
-        emit(Resource.Loading<R>())
+        emit(Resource.Loading())
 
         val resp = call.awaitResponse()
 

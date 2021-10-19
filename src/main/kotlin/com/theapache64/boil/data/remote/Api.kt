@@ -1,7 +1,7 @@
 package com.theapache64.boil.data.remote
 
+import com.github.theapache64.retrosheet.annotations.Read
 import com.theapache64.boil.util.calladapter.flow.Resource
-import com.theapache64.retrosheet.core.Read
 import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
 import retrofit2.Response
