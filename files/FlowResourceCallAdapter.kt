@@ -2,6 +2,7 @@ package $PACKAGE_NAME.util.calladapter.flow
 
 import $PACKAGE_NAME.util.calladapter.flow.Resource.Error
 import $PACKAGE_NAME.util.calladapter.flow.Resource.Success
+import $PACKAGE_NAME.util.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -26,27 +27,27 @@ class FlowResourceCallAdapter<R>(
     override fun adapt(call: Call<R>) = flow<Resource<R>> {
 
         // Firing loading resource
-        emit(Resource.Loading<R>())
+        emit(Resource.Loading())
 
         val resp = call.awaitResponse()
 
         if (resp.isSuccessful) {
             resp.body()?.let { data ->
                 // Success
-                emit(Success(null, data))
+                emit(Resource.Success(data, null))
             } ?: kotlin.run {
                 // Error
-                emit(Error("Response can't be null"))
+                emit(Resource.Error("Response can't be null"))
             }
         } else {
             // Error
             val errorBody = resp.message()
-            emit(Error(errorBody))
+            emit(Resource.Error(errorBody))
         }
 
     }.catch { error: Throwable ->
         if (isSelfExceptionHandling) {
-            emit(Error(error.message ?: "Something went wrong"))
+            emit(Resource.Error(error.message ?: "Something went wrong"))
         } else {
             throw error
         }
