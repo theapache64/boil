@@ -2,6 +2,7 @@ package $PACKAGE_NAME.util.calladapter.flow
 
 
 import kotlinx.coroutines.flow.Flow
+import $PACKAGE_NAME.util.Resource
 import retrofit2.CallAdapter
 import retrofit2.CallAdapter.Factory
 import retrofit2.Retrofit
