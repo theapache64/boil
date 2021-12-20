@@ -2,7 +2,6 @@ package com.theapache64.boil.util.calladapter.flow
 
 import com.theapache64.boil.util.calladapter.flow.Resource.Error
 import com.theapache64.boil.util.calladapter.flow.Resource.Success
-import jdk.jfr.internal.OldObjectSample.emit
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

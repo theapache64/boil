@@ -79,7 +79,7 @@ class AddViewModel @Inject constructor(
 
                                 // Printing instructions
                                 val instructions = it.data.instructions
-                                if (instructions.isNotEmpty()) {
+                                if (instructions?.isNotEmpty()==true) {
                                     println("\nInstructions:\n$instructions")
                                 }
                             } else {

@@ -21,11 +21,11 @@ dependencies {
     // Picocli A Mighty Tiny Command Line Interface : Java command line parser with both an annotations API and a programmatic API. Usage
     // help with ANSI styles and colors. Autocomplete. Nested subcommands. Easily included
     // as source to avoid adding a dependency.
-    implementation 'info.picocli:picocli:4.6.1'
+    implementation 'info.picocli:picocli:4.6.2'
 
     // Picocli Codegen : Picocli Code Generation - Tools to generate documentation, configuration, source
     // code and other files from a picocli model.
-    kapt 'info.picocli:picocli-codegen:4.6.1'
+    kapt 'info.picocli:picocli-codegen:4.6.2'
 
     // Dagger : A fast dependency injector for Android and Java.
     implementation 'com.google.dagger:dagger:2.39.1'
@@ -49,10 +49,10 @@ dependencies {
     implementation 'com.github.theapache64:retrosheet:2.0.0-beta03'
 
     // Moshi Kotlin Codegen : Moshi Kotlin Codegen
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     // Moshi : Moshi
-    implementation 'com.squareup.moshi:moshi:1.12.0'
+    implementation 'com.squareup.moshi:moshi:1.13.0'
 
     // Expekt : BDD assertion library for Kotlin
     testImplementation 'com.winterbe:expekt:0.5.0'
