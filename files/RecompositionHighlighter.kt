@@ -1,4 +1,3 @@
-
 package $PACKAGE_NAME.util
 
 import androidx.compose.runtime.LaunchedEffect
