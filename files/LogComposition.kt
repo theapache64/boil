@@ -15,7 +15,7 @@ class Ref(var value: Int)
  */
 @Composable
 @Suppress("NOTHING_TO_INLINE")
-inline fun LogCompositions(tag: String, msg: String) {
+inline fun LogCompositions(tag: String, msg: String = "") {
 
     if (BuildConfig.DEBUG) {
         val ref = remember { Ref(0) }
