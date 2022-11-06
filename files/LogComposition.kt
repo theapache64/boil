@@ -15,11 +15,14 @@ class Ref(var value: Int)
  */
 @Composable
 @Suppress("NOTHING_TO_INLINE")
-inline fun LogCompositions(tag: String, msg: String = "") {
-
-    if (BuildConfig.DEBUG) {
-        val ref = remember { Ref(0) }
-        SideEffect { ref.value++ }
-        Log.d(tag, "Compositions: ${msg} ${ref.value}")
+inline fun LogCompositions(
+    tag: String,
+    msg: String = "",
+    logWhen: (count: Int) -> Boolean = { true }
+) {
+    val ref = remember { Ref(0) }
+    SideEffect { ref.value++ }
+    if(logWhen(ref.value)){
+        Log.d(tag, "Compositions: $msg ${ref.value}")
     }
 }
