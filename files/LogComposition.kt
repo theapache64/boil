@@ -18,11 +18,11 @@ class Ref(var value: Int)
 inline fun LogCompositions(
     tag: String,
     msg: String = "",
-    logWhen: (count: Int) -> Boolean = { true }
+    shouldLog: (count: Int) -> Boolean = { true }
 ) {
     val ref = remember { Ref(0) }
     SideEffect { ref.value++ }
-    if(logWhen(ref.value)){
+    if(shouldLog(ref.value)){
         Log.d(tag, "Compositions: $msg ${ref.value}")
     }
 }
