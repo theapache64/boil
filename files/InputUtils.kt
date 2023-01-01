@@ -16,8 +16,8 @@ object InputUtils {
         print("$prompt: ")
         val value = scanner.nextLine()
         while (value.trim().isEmpty() && isRequired) {
-            println("Invalid ${prompt.toLowerCase()} `$value`")
-            return getString(prompt, isRequired)
+            println("Invalid input `$value`")
+            return getString(prompt, isRequired = true)
         }
         return value
     }
