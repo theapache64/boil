@@ -1,10 +1,10 @@
 {
     "bin": {"boil": "jdeploy-bundle/jdeploy.js"},
-    "author": "",
-    "description": "",
+    "author": "theapache64",
+    "description": "Boil is a CLI partner for adding boiler plate codes to Gradle based projects.\n\n",
     "main": "index.js",
     "preferGlobal": true,
-    "repository": "",
+    "repository": "https://github.com/theapache64/boil/",
     "version": "1.0.8",
     "jdeploy": {"jar": "build/libs/boil.main.jar"},
     "dependencies": {"shelljs": "0.8.4"},
