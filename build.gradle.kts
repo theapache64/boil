@@ -9,6 +9,18 @@ group = "com.theapache64"
 // [latest version - i promise!]
 version = "1.0.6"
 
+tasks.jar {
+    this.project.projectDir
+    val projectName = this.project.name
+    val group = this.project.group
+    archiveFileName.set("$projectName.main.jar")
+    manifest {
+        attributes["Main-Class"] = "${group}.$projectName.MainKt"
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
