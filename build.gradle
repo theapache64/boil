@@ -1,8 +1,8 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.25'
+    id 'org.jetbrains.kotlin.kapt' version '1.9.25'
 }
-apply plugin: 'kotlin-kapt'
 
 
 group 'com.theapache64'
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 
     // Picocli A Mighty Tiny Command Line Interface : Java command line parser with both an annotations API and a programmatic API. Usage
     // help with ANSI styles and colors. Autocomplete. Nested subcommands. Easily included
@@ -28,11 +28,11 @@ dependencies {
     kapt 'info.picocli:picocli-codegen:4.6.2'
 
     // Dagger : A fast dependency injector for Android and Java.
-    implementation 'com.google.dagger:dagger:2.39.1'
+    implementation 'com.google.dagger:dagger:2.52'
 
     // Dagger Compiler : Tools to generate Dagger injection and module adapters from annotated code and validate
     // them.
-    kapt 'com.google.dagger:dagger-compiler:2.39.1'
+    kapt 'com.google.dagger:dagger-compiler:2.52'
 
     // Kotlinx Coroutines Core : Coroutines support libraries for Kotlin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
@@ -49,21 +49,14 @@ dependencies {
     implementation 'com.github.theapache64:retrosheet:2.0.0-beta03'
 
     // Moshi Kotlin Codegen : Moshi Kotlin Codegen
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.15.1'
 
     // Moshi : Moshi
-    implementation 'com.squareup.moshi:moshi:1.13.0'
+    implementation 'com.squareup.moshi:moshi:1.15.1'
 
     // Expekt : BDD assertion library for Kotlin
     testImplementation 'com.winterbe:expekt:0.5.0'
 
     // Kotlinx Coroutines Core : Coroutines support libraries for Kotlin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
 }
