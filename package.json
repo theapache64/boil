@@ -6,7 +6,7 @@
     "preferGlobal": true,
     "repository": "",
     "version": "1.0.8",
-    "jdeploy": {"jar": "boil.main.jar"},
+    "jdeploy": {"jar": "build/libs/boil.main.jar"},
     "dependencies": {"shelljs": "0.8.4"},
     "license": "ISC",
     "name": "boil-tool",
