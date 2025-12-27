@@ -72,7 +72,7 @@ class AddViewModel @Inject constructor(
                             val shouldStartIntegration = InputUtils.getString(
                                 "⌨ Type 'y' to start integration",
                                 true
-                            ).trim().toLowerCase() == "y"
+                            ).trim().lowercase() == "y"
 
                             if (shouldStartIntegration) {
                                 startIntegration(classList)
