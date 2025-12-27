@@ -11,7 +11,7 @@ import java.util.concurrent.Callable
 @CommandLine.Command(
     name = "boil",
     // [latest version - i promise!]
-    version = ["v1.1.2"],
+    version = ["v1.1.3"],
     mixinStandardHelpOptions = true,
     subcommands = [
         AddView::class,

@@ -7,7 +7,7 @@ plugins {
 
 group = "com.theapache64"
 // [latest version - i promise!]
-version = "1.1.2"
+version = "1.1.3"
 
 tasks.jar {
     this.project.projectDir
