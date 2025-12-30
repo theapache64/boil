@@ -1,6 +1,14 @@
 package $PACKAGE_NAME.util
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.CoroutineScope
 
 
@@ -40,12 +48,19 @@ abstract class EventQueue<T> {
 }
 
 @Composable
-fun <T> EventHandler(eventQueue: EventQueue<T>, handler: suspend CoroutineScope.(T) -> Unit) {
+fun <T> EventHandler(
+    eventQueue: EventQueue<T>,
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    handler: suspend CoroutineScope.(T) -> Unit
+) {
     val e = eventQueue.next().value
-    LaunchedEffect(e) {
+    LaunchedEffect(e, lifecycleOwner) {
         if (e != null) {
-            handler(e.value)
-            eventQueue.onHandled(e)
+            lifecycleOwner.repeatOnLifecycle(minActiveState) {
+                handler(e.value)
+                eventQueue.onHandled(e)
+            }
         }
     }
 }
